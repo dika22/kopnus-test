@@ -13,7 +13,7 @@ class ApplicationController extends Controller
             return $this->response(['message' => 'Forbidden'], false, 403);
         }
         $request->validate([
-            'job_id' => 'required|exists:jobs,id',
+            'job_id' => 'required',
             'user_id' => 'required',
             'cv' => 'required|string',
             'status' => 'required|in:1,2,3', // 1 cv review, 2 user interview, 3 reject
@@ -26,7 +26,7 @@ class ApplicationController extends Controller
             'status' => $request->status,
         ]);
     
-        return response()->json($application, 201);
+        return $this->response($application, true, 201);
     }
 
     public function getApplicationByUserID(Request $request, $id) {

@@ -19,7 +19,7 @@ Route::get('/health-check', function () {
 });
 
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');;
 
 Route::get('/jobs', [JobsController::class, 'index']); // public
 Route::get('/jobs/{id}', [JobsController::class, 'getJobByUserID']);
@@ -27,6 +27,7 @@ Route::get('/applications/{id}', [ApplicationController::class, 'getApplicationB
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/jobs', [JobsController::class, 'store']); // employee
+    Route::put('/jobs/{id}', [JobsController::class, 'update']); // employee
     Route::post('/applications', [ApplicationController::class, 'apply']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });

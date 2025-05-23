@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('job_id')->constrained()->onDelete('cascade');
             $table->text('cv'); // bisa URL atau text CV
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

@@ -5,3 +5,5 @@
 - php artisan migrate
 - php artisan serve
 - import postman-collection for test api
+- role :
+    - 1 admin, 2 employee, 3 jobseeker
